@@ -10,8 +10,14 @@ class " . $c . " extends CI_Controller
     function __construct()
     {
         parent::__construct();
+
         \$this->load->model('$m');
-        \$this->load->library('form_validation');";
+        \$this->load->library('form_validation');
+
+        if(!\$this->session->userdata('logined') || \$this->session->userdata('logined') != true)
+        {
+            redirect('/');
+        }";
 
 if ($jenis_tabel <> 'reguler_table') {
     $string .= "        \n\t\$this->load->library('datatables');";

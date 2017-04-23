@@ -1,8 +1,17 @@
 <?php 
 
-$string = "<?php \$this->load->view('templates/header_view');?>";
+$string = "<?php \$this->load->view('templates/header');?>";
 $string .= "
-        <h2>".str_replace("_"," ", ucfirst($table_name))." List</h2>
+        <div class=\"row\" style=\"margin-bottom: 20px\">
+            <div class=\"col-md-4\">
+                <h2>".str_replace("_"," ", ucfirst($table_name))." List</h2>
+            </div>
+            <div class=\"col-md-8 text-center\">
+                <div id=\"message\">
+                    <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
+                </div>
+            </div>
+        </div>
         <div class=\"row\" style=\"margin-bottom: 10px\">
             <div class=\"col-md-4\">
                 <?php echo anchor(site_url('".$c_url."/create'),'Create', 'class=\"btn btn-primary\"'); ?>
@@ -85,7 +94,7 @@ $string .= "\n\t    </div>
                 <?php echo \$pagination ?>
             </div>
         </div>";
-$string = "<?php \$this->load->view('templates/footer_view');?>";
+$string = "<?php \$this->load->view('templates/footer');?>";
 
 
 $hasil_view_list = createFile($string, $target."views/" . $c_url . "/" . $v_list_file);

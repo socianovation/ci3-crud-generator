@@ -1,8 +1,18 @@
 <?php 
 
-$string = "<?php \$this->load->view('templates/header_view');?>";
+$string = "<?php \$this->load->view('templates/header');?>";
 
-$string .= "<h2>".str_replace("_"," ", ucfirst($table_name))." <?php echo \$button ?></h2>
+$string .= "
+<div class=\"row\" style=\"margin-bottom: 20px\">
+            <div class=\"col-md-4\">
+                <h2>".str_replace("_"," ", ucfirst($table_name))." <?php echo \$button ?></h2>
+            </div>
+            <div class=\"col-md-8 text-center\">
+                <div id=\"message\">
+                    <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
+                </div>
+            </div>
+        </div>
         <form action=\"<?php echo \$action; ?>\" method=\"post\">";
 foreach ($non_pk as $row) {
     if ($row["data_type"] == 'text')
@@ -23,7 +33,7 @@ $string .= "\n\t    <input type=\"hidden\" name=\"".$pk."\" value=\"<?php echo $
 $string .= "\n\t    <button type=\"submit\" class=\"btn btn-primary\"><?php echo \$button ?></button> ";
 $string .= "\n\t    <a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-default\">Cancel</a>";
 $string .= "\n\t</form>";
-$string .= "<?php \$this->load->view('templates/footer_view');?>";
+$string .= "<?php \$this->load->view('templates/footer');?>";
 
 $hasil_view_form = createFile($string, $target."views/" . $c_url . "/" . $v_form_file);
 

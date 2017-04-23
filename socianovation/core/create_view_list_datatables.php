@@ -1,5 +1,5 @@
 <?php 				
-$string = "<?php \$this->load->view('templates/header_view');?>";
+$string = "<?php \$this->load->view('templates/header');?>";
 	
 	$string .= "
         <div class=\"row\" style=\"margin-bottom: 20px\">
@@ -45,7 +45,7 @@ $col_non_pk = implode(',', $column_non_pk);
 $string .= "\n\t    
         </table>";
 		
-$string .= "<?php \$this->load->view('templates/footer_view'); ?>";
+$string .= "<?php \$this->load->view('templates/footer'); ?>";
 
 $string .= "<script type=\"text/javascript\">
             $(document).ready(function() {

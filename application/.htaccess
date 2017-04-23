@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteBase /amco/admin/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond $1 !^(index\.php|images|robots\.txt|css|fonts|js|assets|tester|google896ddaf02d796607.html|info.php|generator|sitemap.xml|ror.xml)
+RewriteRule  ^(.*)$ /amco/admin/index.php/$1 [L]
+<IfModule authz_core_module>
+    Require all denied
+</IfModule>
+<IfModule !authz_core_module>
+    Deny from all
+</IfModule>
